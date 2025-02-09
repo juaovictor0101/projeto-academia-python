@@ -24,7 +24,7 @@ if not os.path.exists(arquivo_funcionarios):
 def menu_principal():
     limpar_terminal()
     print("----------------------------------------")
-    print("Bem-vindo ao sistema da Academia XXX")
+    print("Bem-vindo ao sistema da Academia João Bombadão")
     print("----------------------------------------")
     print("1. Aluno")
     print("2. Funcionário")
