@@ -29,7 +29,8 @@ def menu_funcionario():
         print("1. Adicionar novo aluno")
         print("2. Ver lista de alunos")
         print("3. Excluir aluno")
-        print("4. Voltar")
+        print("4. Atualizar dados de um aluno")
+        print("5. Voltar")
         print("----------------------------------------")
         escolha = input("Escolha uma opção: ")
         if escolha == '1':
@@ -39,6 +40,8 @@ def menu_funcionario():
         elif escolha == '3':
             excluir_aluno()
         elif escolha == '4':
+            atualizar_login_aluno()
+        elif escolha == '5':
             break
         else:
             print("Opção inválida!")
@@ -86,6 +89,29 @@ def excluir_aluno():
             aluno_removido = alunos.pop(indice)
             salvar_dados(arquivo_alunos, alunos)
             print(f"Aluno {aluno_removido[0]} removido com sucesso!")
+        else:
+            print("Número inválido!")
+    except ValueError:
+        print("Entrada inválida! Digite um número.")
+    input("Pressione Enter para continuar...")
+
+# Função para atualizar dados de login do usuário   
+def atualizar_login_aluno():
+    limpar_terminal()
+    print("----------------------------------------")
+    print("Atualizar Login do Aluno")
+    print("----------------------------------------")
+    alunos = carregar_dados(arquivo_alunos)
+    for i, aluno in enumerate(alunos, start=1):
+        print(f"{i}. Login: {aluno[0]}, Senha: {aluno[1]}")
+    print("----------------------------------------")
+    try:
+        indice = int(input("Digite o número do aluno que deseja atualizar: ")) - 1
+        if 0 <= indice < len(alunos):
+            novo_login = input("Novo login: ")
+            alunos[indice][0] = novo_login
+            salvar_dados(arquivo_alunos, alunos)
+            print("Login do aluno atualizado com sucesso!")
         else:
             print("Número inválido!")
     except ValueError:
